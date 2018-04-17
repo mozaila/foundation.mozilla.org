@@ -58,11 +58,19 @@ class ModularPage(MetadataPageMixin, Page):
         help_text='For text-heavy pages, turn this on to reduce the overall width of the content on the page.'
     )
 
+    zen_nav = models.BooleanField(
+        default=False,
+        help_text='For secondary nav pages or minisites, turn this on to collapse the primary nav by deault and add a toggle hamburger.'
+    )
+
     body = StreamField(base_fields)
 
     settings_panels = Page.settings_panels + [
         MultiFieldPanel([
             FieldPanel('narrowed_page_content'),
+        ]),
+        MultiFieldPanel([
+            FieldPanel('zen_nav'),
         ])
     ]
 
@@ -298,11 +306,19 @@ class PrimaryPage(MetadataPageMixin, Page):
         help_text='For text-heavy pages, turn this on to reduce the overall width of the content on the page.'
     )
 
+    zen_nav = models.BooleanField(
+        default=False,
+        help_text='For secondary nav pages or minisites, turn this on to collapse the primary nav by deault and add a toggle hamburger.'
+    )
+
     body = StreamField(base_fields)
 
     settings_panels = Page.settings_panels + [
         MultiFieldPanel([
             FieldPanel('narrowed_page_content'),
+        ]),
+        MultiFieldPanel([
+            FieldPanel('zen_nav'),
         ])
     ]
 
